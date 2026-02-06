@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class Runner implements CommandLineRunner {
@@ -30,7 +31,7 @@ public class Runner implements CommandLineRunner {
         Edificio ed1 = edificioService.save(new Edificio("Sede Epicode", "Via Epicode", "Roma"));
         Edificio ed2 = edificioService.save(new Edificio("Edificio e", "Via degli Edifici", "Milano"));
         Edificio ed3 = edificioService.save(new Edificio("Cioccolateria", "Via del Cioccolato", "Agrigento"));
-
+        Edificio ed4 = edificioService.save(new Edificio("Edificio AG2", "Via delle Copie", "Agrigento"));
 
         // Salvo le postazioni
         Postazione po1 = postazioneService.save(new Postazione("postazione 1", TipoPostazione.PRIVATO, 50, ed1));
@@ -81,5 +82,10 @@ public class Runner implements CommandLineRunner {
         }
 
         System.out.println("I dati sono stati registrati nel database.");
+
+        // Provo il metodo per stampare gli edifici ordinati per città
+        List<Edificio> edifici = edificioService.findAllOrderByCitta();
+        edifici.forEach(System.out::println);
+
     }
 }

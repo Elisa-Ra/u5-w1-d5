@@ -5,6 +5,7 @@ import elisaraeli.u5_w1_d5.repositories.EdificioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,4 +24,10 @@ public class EdificioService {
                 new RuntimeException("L'edificio non è stato trovato"));
 
     }
+
+    // Ordino gli edifici per città
+    public List<Edificio> findAllOrderByCitta() {
+        return edificioRepository.findAllByOrderByCittaAsc();
+    }
+    
 }
