@@ -44,7 +44,8 @@ public class Runner implements CommandLineRunner {
         Utente ut1 = utenteService.save(new Utente("username1", "Nome Cognome", "utente1@email.com"));
         Utente ut2 = utenteService.save(new Utente("ely2", "Elisa Raeli", "elisa@email.com"));
         Utente ut3 = utenteService.save(new Utente("user3", "James Sawyer", "sawyer@email.com"));
-
+        // provo a salvare un nuovo utente con un username già utilizzato
+        Utente ut4 = utenteService.save(new Utente("ely2", "Elisa Seconda", "elisa2@email.com"));
 
         // Salvo le prenotazioni
         try {
