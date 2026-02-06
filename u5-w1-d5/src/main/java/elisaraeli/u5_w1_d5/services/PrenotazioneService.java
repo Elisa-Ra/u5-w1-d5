@@ -14,4 +14,5 @@ public class PrenotazioneService {
     public void save(Prenotazione prenotazione) {
         prenotazioneRepository.save(prenotazione);
     }
+    
 }
