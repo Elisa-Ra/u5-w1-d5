@@ -22,16 +22,17 @@ public class PrenotazioneService {
 
     public Prenotazione prenota(LocalDate data, Utente utente, Postazione postazione) {
         // Controllo su postazione e data
-        if (prenotazioneRepository.existsPostazioneAndData(postazione, data)) {
+        if (prenotazioneRepository.existsByPostazioneAndData(postazione, data)) {
             throw new PrenotazioneException("La postazione con id: " + postazione.getId()
                     + " ha già una prenotazione in questa data: " + data);
         }
         // Controllo su utente e data
-        if (prenotazioneRepository.existsUtenteAndData(utente, data)) {
+        if (prenotazioneRepository.existsByUtenteAndData(utente, data)) {
             throw new PrenotazioneException("L'utente " + utente.getNomeCompleto()
                     + " ha già prenotato una postazione per questa data: " + data);
         }
         Prenotazione prenotazione = new Prenotazione(data, utente, postazione);
         return prenotazioneRepository.save(prenotazione);
+
     }
 }

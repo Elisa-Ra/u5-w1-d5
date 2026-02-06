@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PostazioneRepository extends JpaRepository<Postazione, UUID> {
+
     // Per cercare una postazione per tipologia e città
-    List<Postazione> findByTipoAndCitta(TipoPostazione tipo, String citta);
+    List<Postazione> findByTipoAndEdificio_Citta(TipoPostazione tipo, String citta);
 }
